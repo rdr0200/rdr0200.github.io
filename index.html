@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SV2 Perf</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script type="module" src="https://sandbox.src.mastercard.com/srci/integration/components/src-ui-kit/src-ui-kit.esm.js"></script>
+  <link rel="stylesheet" href="https://sandbox.src.mastercard.com/srci/integration/components/src-ui-kit/src-ui-kit.css">
+  <script type="text/javascript" src="app/setup.js"></script>
+  <script type="text/javascript" src="app/index.js"></script>
+  <style>
+    button {
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+    <p>Environment:</p>
+    <input type="radio" id="sandbox" name="envi" value="sandbox" onClick="getEnvironment()">
+    <label for="sandbox">sandbox</label><br>
+    <input type="radio" id="stage" name="envi" value="stage" onClick="getEnvironment()">
+    <label for="stage">stage</label><br>
+    <input type="radio" id="prod" name="envi" value="prod" onClick="getEnvironment()">
+    <label for="prod">prod</label><br>
+    <p>mcsrc.enablenewinit</p>
+    <input type="radio" id="enablewinit_true" name="enablewinit" value="true" onClick="toggleBootStrapIsRecognized()">
+    <label for="enablewinit_true">true</label><br>
+    <input type="radio" id="enablewinit_false" name="enablewinit" value="false" onClick="toggleBootStrapIsRecognized()">
+    <label for="enablewinit_false">false</label><br>
+    <br/><br/>
+    <button type="button" id ="cart" onClick="loadInit('US')">Init Cart(US)</button>
+    <button type="button" id ="testCartForIneligble" onClick="loadInit('GB')">Init Cart(GB)</button>
+    <button type="button" id ="checkoutNewUser" onClick="click2PayService('fake.email@test.com')" disabled>New User Checkout</button>
+    <button type="button" id ="checkoutReturningUser" onClick="click2PayService('mc01272022@mailinator.com')" disabled>Returning User Checkout</button>
+    <button type="button" id="installmentEligible" onClick="installmentsEligibleService()" disabled>Installment Eligible</button>
+    <div id="srcui"></div>
+</body>
+</html>
