@@ -1,0 +1,8 @@
+---
+applications:
+- name: installment-service-pcf
+  command: node server.js
+  memory: 512M
+  buildpack: nodejs_buildpack
+services:
+  - dynatrace
