@@ -1,0 +1,15 @@
+{
+  "name": "srcuitool",
+  "version": "1.0.0",
+  "description": "srcui tool nodejs application",
+  "main": "./server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "14.19.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
