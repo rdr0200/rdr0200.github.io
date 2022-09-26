@@ -1,3 +1,20 @@
+const debugPayloads = []
+window.debugPayloads = debugPayloads
+const log = console.log
+console.log = (namespace, type, payload) => {
+  try {
+    const [payloadType, data] = payload
+
+    if (type === 'trace' && payloadType === 'storing method result:') {
+        debugPayloads.push(data)
+        console.log(data);
+      }
+    } catch (e) {}
+
+    log(namespace, type, payload);
+
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', sourceSv2)
 } else {
@@ -38,7 +55,14 @@ function toggleBootStrapIsRecognized(){
 
 async function getInitParamsHandler(params) {
   try {
+    const start = Date.now();
     const initResolver = await window.click2payInstance.init(params);
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "init";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     return initResolver;
   }catch(e) {
     console.log(e);
@@ -96,7 +120,14 @@ async function loadInit(countryCode) {
 
 async function getCardsHandler() {
   try {
+    const start = Date.now();
     const cards = await window.click2payInstance.getCards();
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "getCards";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     console.log("cards: ",cards);
     return cards;
   }catch(e) {
@@ -108,8 +139,14 @@ async function lookupHandler(email) {
   console.log(email);
   try {
     const identityLookupParam = { email: email }
-
+    const start = Date.now();
     const consumerPresent =  await window.click2payInstance.idLookup(identityLookupParam);
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "idLookup";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     return consumerPresent
 
   }catch(e) {
@@ -119,9 +156,16 @@ async function lookupHandler(email) {
 
 async function validate(otp) {
   try {
+    const start = Date.now();
     const validated = await window.click2payInstance.validate ({
       value: otp,
     });
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "validate";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     console.log('validated:', validated)
     return validated;
   }catch(e) {
@@ -135,12 +179,19 @@ async function initiateIdentityValidation(validationChannelId) {
   }
   try {
     var initiateValidation;
+    const start = Date.now();
     if (validationChannelId === undefined) {
       // when sending the first OTP
       initiateValidation = await window.click2payInstance.initiateValidation();
     } else {
       initiateValidation = await window.click2payInstance.initiateValidation(initiateIdentityValidationParams);
     }
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "initiateValidation";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     return initiateValidation;
   }catch(e) {
     console.log(e);
@@ -151,12 +202,19 @@ async function encryptCardHandler() {
   const { perfConfig } = window
 
   try {
+    const start = Date.now();
     const encryptedCard = await window.click2payInstance.encryptCard({
       primaryAccountNumber:'5120350100064537',
       panExpirationMonth:'12',
       panExpirationYear:'23',
       cardSecurityCode:'123',
     })
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "encryptCard";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
 
     return encryptedCard;
   }catch(e) {
@@ -166,9 +224,16 @@ async function encryptCardHandler() {
 
 async function checkoutWithNewCardHandler2(encryptCard, iframe) {
   try {
+    const start = Date.now();
     const windowRef = iframe.contentWindow;
     const param = { ...encryptCard, windowRef,}
     const resp = await window.click2payInstance.checkoutWithNewCard(param);
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "checkoutWithNewCard";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     console.log("created new c2p account", resp);
     return resp;
   } catch(e) {
@@ -198,11 +263,18 @@ async function checkoutWithNewCardHandler() {
 
 async function checkoutWithCardHandler(srcDigitalCardId) {
   try {
+    const start = Date.now();
     const param = {
       windowRef: window.open('', 'src-window'),
       srcDigitalCardId: srcDigitalCardId
     }
     const resp = await window.click2payInstance.checkoutWithCard(param);
+    const end = Date.now();
+    const diff = end - start;
+    const timeDiff = {};
+    timeDiff.methodName = "checkoutWithCard";
+    timeDiff.responseTime = diff;
+    debugPayloads.push(timeDiff);
     return resp;
   } catch(e) {
     console.log(e)
@@ -212,9 +284,15 @@ async function checkoutWithCardHandler(srcDigitalCardId) {
 
 async function isInstallmentEligibleHandler(param) {
     try {
-        const resp = await window.click2payInstance.isInstallmentsEligible(param);
-
-        return resp;
+       const start = Date.now();
+       const resp = await window.click2payInstance.isInstallmentsEligible(param);
+       const end = Date.now();
+       const diff = end - start;
+       const timeDiff = {};
+       timeDiff.methodName = "isInstallmentsEligible";
+       timeDiff.responseTime = diff;
+       debugPayloads.push(timeDiff);
+       return resp;
     }catch(e) {
         console.log(e);
     }
@@ -222,8 +300,14 @@ async function isInstallmentEligibleHandler(param) {
 
 async function installmentCheckoutHandler(param) {
     try {
+        const start = Date.now();
         const resp = await window.click2payInstance.checkoutWithInstallments(param);
-
+        const end = Date.now();
+       const diff = end - start;
+       const timeDiff = {};
+       timeDiff.methodName = "checkoutWithInstallments";
+       timeDiff.responseTime = diff;
+       debugPayloads.push(timeDiff);
         return resp;
     }catch(e) {
         console.log(e);
