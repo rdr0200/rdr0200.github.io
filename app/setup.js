@@ -37,8 +37,8 @@ const installmentParams = {
       "transactionAmount": "123",
       "transactionCurrencyCode": "USD"
     },
-    merchantCategoryCode: "0000",
-    merchantCountryCode: "US"
+    merchantCategoryCode: "0000"
+    
 }
 
 const notEligibleInstallmentParams = {
@@ -47,8 +47,8 @@ const notEligibleInstallmentParams = {
       "transactionAmount": "123",
       "transactionCurrencyCode": "USD"
     },
-    merchantCategoryCode: "0000",
-    merchantCountryCode: "GB"
+    merchantCategoryCode: "0000"
+    
 }
 
  const srcDpaIds = {
