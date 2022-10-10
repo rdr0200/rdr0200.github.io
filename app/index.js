@@ -93,9 +93,11 @@ async function loadInit(merchantCategoryCode) {
         document.querySelector('#checkoutNewUser').disabled = false;
         document.querySelector('#checkoutReturningUser').disabled = false;
       
-        if (merchantCategoryCode === merchants.merchantCategoryCodes.eligibleTrue)
+        if (merchantCategoryCode === merchants.merchantCategoryCodes.eligibleTrue) {
+          console.log("isEligible= true")
           isInstallmentEligiblePromise =  isInstallmentEligibleHandler(installmentParams);
-        else {
+        } else {
+           console.log("isEligible= false")
           isInstallmentEligiblePromise =  isInstallmentEligibleHandler(notEligibleInstallmentParams);
         }
         isInstallmentEligiblePromise.then(eligible => {
