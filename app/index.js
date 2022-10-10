@@ -105,7 +105,7 @@ async function loadInit(countryCode) {
 
     const initResolverPromise = getInitParamsHandler(params);
     initResolverPromise.then(initResolver => {
-        console.log("Test:" + JSON.stringify(debugPayloads));
+        console.log(debugPayloads);
         console.log("init", initResolver);
         cardBrands = initResolver.availableCardBrands;
 
