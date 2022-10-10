@@ -412,6 +412,7 @@ function requestOTP(validationChannelId) {
 function installmentsEligibleService() {
     if(installmentsEligible.eligible) {
         document.querySelector('#srcui').append(JSON.stringify(installmentsEligible));
+        document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
 
         toggleButton(true)
     }
