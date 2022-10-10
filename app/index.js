@@ -72,7 +72,7 @@ async function getInitParamsHandler(params) {
 let cardBrands;
 let installmentsEligible
 
-async function loadInit(countryCode) {
+async function loadInit(merchantCategoryCode) {
   const { perfConfig } = window
   window.click2payInstance = new window.Click2Pay({debug:true})
 
@@ -93,7 +93,7 @@ async function loadInit(countryCode) {
         document.querySelector('#checkoutNewUser').disabled = false;
         document.querySelector('#checkoutReturningUser').disabled = false;
       
-        if (countryCode === merchants.merchantCountryCodes.US)
+        if (merchantCategoryCode === merchants.merchantCategoryCodes.eligibleTrue)
           isInstallmentEligiblePromise =  isInstallmentEligibleHandler(installmentParams);
         else {
           isInstallmentEligiblePromise =  isInstallmentEligibleHandler(notEligibleInstallmentParams);
