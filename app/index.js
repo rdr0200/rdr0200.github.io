@@ -92,29 +92,31 @@ async function loadInit(countryCode) {
 
         document.querySelector('#checkoutNewUser').disabled = false;
         document.querySelector('#checkoutReturningUser').disabled = false;
+      
+        if (countryCode === merchants.merchantCountryCodes.US)
+          isInstallmentEligiblePromise =  isInstallmentEligibleHandler(installmentParams);
+        else {
+          isInstallmentEligiblePromise =  isInstallmentEligibleHandler(notEligibleInstallmentParams);
+        }
+        isInstallmentEligiblePromise.then(eligible => {
+            console.log("isInstallmentEligible", eligible);
+            installmentsEligible = eligible;
 
-         clearCheckoutFrame();
+            if (eligible.eligible) {
+                document.querySelector('#installmentEligible').disabled = false;
+                document.querySelector('#installmentEligible').innerText = "Installment Eligible";
+            }else {
+                 document.querySelector('#installmentEligible').disabled = true;
+                 document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
+            }
+            document.querySelector('#srcui').innerText = "";
+            document.querySelector('#debugPayload').innerText = "";
+        })
+
+        clearCheckoutFrame();
     });
 
-    if (countryCode === merchants.merchantCountryCodes.US)
-        isInstallmentEligiblePromise =  isInstallmentEligibleHandler(installmentParams);
-    else {
-        isInstallmentEligiblePromise =  isInstallmentEligibleHandler(notEligibleInstallmentParams);
-    }
-    isInstallmentEligiblePromise.then(eligible => {
-        console.log("isInstallmentEligible", eligible);
-        installmentsEligible = eligible;
-
-        if (eligible.eligible) {
-            document.querySelector('#installmentEligible').disabled = false;
-            document.querySelector('#installmentEligible').innerText = "Installment Eligible";
-        }else {
-             document.querySelector('#installmentEligible').disabled = true;
-             document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
-        }
-        document.querySelector('#srcui').innerText = "";
-        document.querySelector('#debugPayload').innerText = "";
-    })
+    
   }catch(e) {
     console.log(e);
   }
