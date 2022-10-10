@@ -69,7 +69,7 @@ const config = {
   env: 'sandbox',
   flow: null,
   cardBrands: ['mastercard'],
-  merchantCategoryCodes: {eligibleTrue:"0000",eligibleFales:"CATT"},
+  merchantCategoryCodes: {eligibleTrue:"0000",eligibleFalse:"CATT"},
 }
 
 const shopperIdentity = {
