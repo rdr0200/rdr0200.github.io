@@ -83,6 +83,18 @@ async function loadInit(countryCode) {
     params.srcDpaId = srcDpaIds[perfConfig.env]
 
     let isInstallmentEligiblePromise;
+    
+    const initResolverPromise = getInitParamsHandler(params);
+    initResolverPromise.then(initResolver => {
+        console.log(debugPayloads);
+        console.log("init", initResolver);
+        cardBrands = initResolver.availableCardBrands;
+
+        document.querySelector('#checkoutNewUser').disabled = false;
+        document.querySelector('#checkoutReturningUser').disabled = false;
+
+         clearCheckoutFrame();
+    });
 
     if (countryCode === merchants.merchantCountryCodes.US)
         isInstallmentEligiblePromise =  isInstallmentEligibleHandler(installmentParams);
@@ -101,19 +113,8 @@ async function loadInit(countryCode) {
              document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
         }
         document.querySelector('#srcui').innerText = "";
+        document.querySelector('#debugPayload').innerText = "";
     })
-
-    const initResolverPromise = getInitParamsHandler(params);
-    initResolverPromise.then(initResolver => {
-        console.log(debugPayloads);
-        console.log("init", initResolver);
-        cardBrands = initResolver.availableCardBrands;
-
-        document.querySelector('#checkoutNewUser').disabled = false;
-        document.querySelector('#checkoutReturningUser').disabled = false;
-
-         clearCheckoutFrame();
-    });
   }catch(e) {
     console.log(e);
   }
