@@ -106,6 +106,7 @@ async function loadInit(countryCode) {
                 document.querySelector('#installmentEligible').disabled = false;
                 document.querySelector('#installmentEligible').innerText = "Installment Eligible";
             }else {
+                 document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
                  document.querySelector('#installmentEligible').disabled = true;
                  document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
             }
