@@ -44,7 +44,7 @@ const installmentParams = {
 const notEligibleInstallmentParams = {
    "dpaLocale": "en_US",
    "transactionAmount": {
-    "transactionAmount": 123,
+    "transactionAmount": 1,
     "transactionCurrencyCode": "USD"
   },
   "merchantCategoryCode": "CATT"  
