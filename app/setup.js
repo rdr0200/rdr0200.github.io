@@ -57,8 +57,7 @@ const notEligibleInstallmentParams = {
  }
 
  const merchants = {
-   merchantCategoryCodes: {US:"0000",GB:"0000"},
-   merchantCountryCodes: {US:"US",GB:"GB"}
+   merchantCategoryCodes: {eligibleTrue:"0000",eligibleFalse:"CATT"},
  }
 
 const config = {
@@ -70,8 +69,7 @@ const config = {
   env: 'sandbox',
   flow: null,
   cardBrands: ['mastercard'],
-  merchantCategoryCodes: {US:"0000",GB:"0000"},
-  merchantCountryCodes: {US:"US",GB:"GB"}
+  merchantCategoryCodes: {eligibleTrue:"0000",eligibleFales:"CATT"},
 }
 
 const shopperIdentity = {
