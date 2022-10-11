@@ -24,11 +24,16 @@ const initParams = {
         dynamicDataType: 'CARD_APPLICATION_CRYPTOGRAM_LONG_FORM',
       },
     ],
+    merchantCountryCode: "US",
+    merchantCategoryCode: "4444"
   },
   dpaData: {
     dpaName: 'SparkTmerch',
     dpaPresentationName: 'SparkTmerch',
   },
+  services: [
+      "INLINE_INSTALLMENTS"
+  ],
 }
 
 const installmentParams = {
@@ -51,7 +56,7 @@ const notEligibleInstallmentParams = {
 }
 
  const srcDpaIds = {
-    sandbox: '2360e9a2-17a7-4766-b08a-a3aef372c643',
+    sandbox: '0185ef9f-eece-410f-b81c-9c719a57ca24',
     stage: 'b756a2b0-ef62-4c62-a6de-f72e75ce5f17',
     prod: '6441fbba-9602-4522-8ac6-bf12d1edc91a',
  }
