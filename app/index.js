@@ -86,7 +86,8 @@ async function loadInit(merchantCategoryCode) {
     
     const initResolverPromise = getInitParamsHandler(params);
     initResolverPromise.then(initResolver => {
-        console.log(debugPayloads);
+        document.querySelector('#srcui').innerText = "";
+        document.querySelector('#debugPayload').innerText = "";
         console.log("init", initResolver);
         cardBrands = initResolver.availableCardBrands;
 
@@ -108,12 +109,11 @@ async function loadInit(merchantCategoryCode) {
                 document.querySelector('#installmentEligible').disabled = false;
                 document.querySelector('#installmentEligible').innerText = "Installment Eligible";
             }else {
-                 document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
-                 document.querySelector('#installmentEligible').disabled = true;
-                 document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
+                document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
+                document.querySelector('#installmentEligible').disabled = true;
+                document.querySelector('#installmentEligible').innerText = "Installment Not Eligible";
             }
-            document.querySelector('#srcui').innerText = "";
-            document.querySelector('#debugPayload').innerText = "";
+          
         }).catch(e => {
             document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
             document.querySelector('#installmentEligible').disabled = true;
