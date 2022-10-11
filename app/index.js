@@ -93,6 +93,7 @@ async function loadInit(merchantCategoryCode) {
 
         document.querySelector('#checkoutNewUser').disabled = false;
         document.querySelector('#checkoutReturningUser').disabled = false;
+        document.querySelector('#getOffer').disabled = false;
       
         if (merchantCategoryCode === merchants.merchantCategoryCodes.eligibleTrue) {
           console.log("isEligible= true")
