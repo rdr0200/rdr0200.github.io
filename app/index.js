@@ -500,5 +500,5 @@ function toggleButton(toggle){
     document.querySelector('#checkoutNewUser').disabled = toggle;
     document.querySelector('#checkoutReturningUser').disabled = toggle;
     document.querySelector('#installmentEligible').disabled = toggle;
-   document.querySelector('#getOffer').disabled = toggle;
+   
 }
