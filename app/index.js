@@ -335,6 +335,7 @@ async function getOfferHandler() {
       const getOffersPromise = await window.click2payInstance.getOffers(params);
       const end = Date.now();
       const timeDiff = {};
+      const diff = end - start;
       timeDiff.methodName = "getOffers";
       timeDiff.responseTime = diff;
       debugPayloads.push(timeDiff);
