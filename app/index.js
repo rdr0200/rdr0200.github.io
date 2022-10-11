@@ -347,6 +347,7 @@ async function getOfferHandler() {
 
 function getOffers() {
     getOfferHandler().then(offer => {
+        console.log(offer)
         document.querySelector('#srcui').append(JSON.stringify(offer));
         document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
     })
