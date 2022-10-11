@@ -325,6 +325,25 @@ async function installmentCheckoutHandler(param) {
     }
 }
 
+async function getOfferHandler() {
+    try {
+      const params = {
+        "emailAddress": "a@b.com"
+      }
+      const getOffersPromise = await window.click2payInstance.getOffers(params);
+
+      return getOffersPromise;
+    }catch(e) {
+        console.log(e)
+    }
+}
+
+function getOffers() {
+    getOfferHandler().then(offer => {
+        console.log(offer);
+    })
+}
+
 function displayCards(cardList, cards) {
   cardList.loadCards(cards);
   cardList.addEventListener('selectSrcDigitalCardId', function (event) {
