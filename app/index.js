@@ -331,8 +331,13 @@ async function getOfferHandler() {
       const params = {
         "emailAddress": "a@b.com"
       }
+      const start = Date.now();
       const getOffersPromise = await window.click2payInstance.getOffers(params);
-
+      const end = Date.now();
+      const timeDiff = {};
+      timeDiff.methodName = "getOffers";
+      timeDiff.responseTime = diff;
+      debugPayloads.push(timeDiff);
       return getOffersPromise;
     }catch(e) {
         console.log(e)
@@ -341,7 +346,8 @@ async function getOfferHandler() {
 
 function getOffers() {
     getOfferHandler().then(offer => {
-        console.log(offer);
+        document.querySelector('#srcui').append(JSON.stringify(installmentsEligible));
+        document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
     })
 }
 
