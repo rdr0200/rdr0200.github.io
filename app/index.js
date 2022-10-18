@@ -345,7 +345,7 @@ async function checkoutWithInstallments() {
       timeDiff.methodName = "checkoutWithInstallmentsProvider";
       timeDiff.responseTime = diff;
       debugPayloads.push(timeDiff);
-      document.querySelector('#srcui').append(JSON.stringify(offer));
+      document.querySelector('#srcui').append(JSON.stringify(promiseResolvedPayload));
         document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
       console.log(promiseResolvedPayload)   ;
    } catch (promiseRejectedPayload) {
