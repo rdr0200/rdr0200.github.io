@@ -342,9 +342,11 @@ async function checkoutWithInstallments() {
       const end = Date.now();
       const timeDiff = {};
       const diff = end - start;
-      timeDiff.methodName = "getOffers";
+      timeDiff.methodName = "checkoutWithInstallmentsProvider";
       timeDiff.responseTime = diff;
       debugPayloads.push(timeDiff);
+      document.querySelector('#srcui').append(JSON.stringify(offer));
+        document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
       console.log(promiseResolvedPayload)   ;
    } catch (promiseRejectedPayload) {
       console.log("sfdsfs " + promiseRejectedPayload)
@@ -373,8 +375,7 @@ async function getOfferHandler() {
 function getOffers() {
     getOfferHandler().then(offer => {
         console.log(offer)
-        document.querySelector('#srcui').append(JSON.stringify(offer));
-        document.querySelector('#debugPayload').append(JSON.stringify(debugPayloads));
+        
     })
 }
 
