@@ -1,49 +1,31 @@
 const initParams = {
-  srcDpaId: null, // will be set by testing playground at runtime
-  cardBrands: null, // cardbrands will be set by testing playground at runtime
-  dpaTransactionOptions: {
-    transactionAmount: {
-      transactionAmount: 123,
-      transactionCurrencyCode: 'USD',
-    },
-    threeDsPreference: 'NONE',
-    consumerEmailAddressRequested: true,
-    consumerNameRequested: true,
-    consumerPhoneNumberRequested: true,
-    payloadTypeIndicatorCheckout: 'PAYMENT',
-    payloadTypeIndicatorPayload: 'PAYMENT',
-    dpaBillingPreference: 'FULL',
-    dpaShippingPreference: 'FULL',
-    dpaAcceptedBillingCountries: [],
-    dpaAcceptedShippingCountries: [],
-    dpaLocale: 'en_US',
-    paymentOptions: [
-      {
-        dpaDynamicDataTtlMinutes: 15,
-        dpaPanRequested: false,
-        dynamicDataType: 'CARD_APPLICATION_CRYPTOGRAM_LONG_FORM',
-      },
-    ],
-    merchantCountryCode: "US",
-    merchantCategoryCode: "4444"
-  },
-  dpaData: {
-    dpaName: 'SparkTmerch',
-    dpaPresentationName: 'SparkTmerch',
-  },
-  services: [
-      "INLINE_INSTALLMENTS"
-  ],
+  "srcDpaId": "0185ef9f-eece-410f-b81c-9c719a57ca24",
+   "cardBrands": ["mastercard"],
+   "dpaLocale": "en_US",
+   "dpaData": {
+     "dpaName": "SparkTmerch"
+   },
+   "services": [
+     "INLINE_INSTALLMENTS"
+   ],
+   "dpaTransactionOptions": {
+     "transactionAmount": {
+       "transactionAmount": 123,
+       "transactionCurrencyCode": "USD"
+     },
+     "merchantCountryCode": "US",
+     "merchantCategoryCode": "4444"
+   }
 }
 
 const installmentParams = {
-    dpaLocale: "en_US",
-    transactionAmount: {
+    "dpaLocale": "en_US",
+    "transactionAmount": {
       "transactionAmount": "123",
       "transactionCurrencyCode": "USD"
     },
-    merchantCategoryCode: "0000"
-    
+    "merchantCategoryCode": "CATT"
+
 }
 
 const notEligibleInstallmentParams = {
@@ -52,7 +34,7 @@ const notEligibleInstallmentParams = {
     "transactionAmount": 1,
     "transactionCurrencyCode": "USD"
   },
-  "merchantCategoryCode": "CATT"  
+  "merchantCategoryCode": "CATT"
 }
 
  const srcDpaIds = {
