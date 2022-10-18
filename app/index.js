@@ -331,7 +331,7 @@ async function checkoutWithInstallments() {
       const iframe = document.createElement("iframe");
       iframe.style.width = '420px'
       iframe.style.height='820px'
-      document.querySelector('#srcui').append(iframe);
+      document.querySelector('#installment').append(iframe);
       
       const params = {
              "windowRef": iframe.contentWindow,
