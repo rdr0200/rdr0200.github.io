@@ -326,6 +326,20 @@ async function installmentCheckoutHandler(param) {
     }
 }
 
+async function checkoutWithInstallments() {
+    try {
+         const params = {
+            "windowRef":  window.open('', 'src-window'),
+            "providerId": "d9f9f36c-d35c-41f1-aeb9-5eaa7e9fe3c9",
+         }
+
+         const promiseResolvedPayload = await window.click2payInstance.checkoutWithInstallmentsProvider(params)
+
+    } catch (promiseRejectedPayload) {
+         console.log(promiseRejectedPayload)
+    }
+}
+
 async function getOfferHandler() {
     try {
       const params = {
