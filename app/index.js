@@ -328,16 +328,27 @@ async function installmentCheckoutHandler(param) {
 
 async function checkoutWithInstallments() {
     try {
-         const params = {
-            "windowRef":  window.open('', 'src-window'),
-            "providerId": "d9f9f36c-d35c-41f1-aeb9-5eaa7e9fe3c9",
-         }
-
-         const promiseResolvedPayload = await window.click2payInstance.checkoutWithInstallmentsProvider(params)
-
-    } catch (promiseRejectedPayload) {
-         console.log(promiseRejectedPayload)
-    }
+      const iframe = document.createElement("iframe");
+      iframe.style.width = '420px'
+      iframe.style.height='820px'
+      document.querySelector('#srcui').append(iframe);
+      
+      const params = {
+             "windowRef": iframe.contentWindow,
+             "providerId": "29694e7a-b4a8-11ec-b909-0242ac120002",
+      }
+      const start = Date.now();
+      const promiseResolvedPayload = await window.click2payInstance.checkoutWithInstallmentsProvider(params)
+      const end = Date.now();
+      const timeDiff = {};
+      const diff = end - start;
+      timeDiff.methodName = "getOffers";
+      timeDiff.responseTime = diff;
+      debugPayloads.push(timeDiff);
+      console.log(promiseResolvedPayload)   ;
+   } catch (promiseRejectedPayload) {
+      console.log("sfdsfs " + promiseRejectedPayload)
+   }
 }
 
 async function getOfferHandler() {
