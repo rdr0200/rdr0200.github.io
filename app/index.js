@@ -375,6 +375,7 @@ async function getOfferHandler() {
 function getOffers() {
     getOfferHandler().then(offer => {
       console.log(offer)
+      document.querySelector('#checkoutWithInstallments').disabled = false;
       document.querySelector('#srcui').append(JSON.stringify(offer));
         
     })
