@@ -336,7 +336,7 @@ async function checkoutWithInstallments() {
       
       const params = {
              "windowRef": iframe.contentWindow,
-             "providerId": offers[0].providerId,
+             "providerId": "29694e7a-b4a8-11ec-b909-0242ac120002",
       }
       const start = Date.now();
       const promiseResolvedPayload = await window.click2payInstance.checkoutWithInstallmentsProvider(params)
