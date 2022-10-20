@@ -326,7 +326,7 @@ async function installmentCheckoutHandler(param) {
     }
 }
 
-let offers = null;
+//let offers = null;
 async function checkoutWithInstallments() {
     try {
       const iframe = document.createElement("iframe");
@@ -376,7 +376,7 @@ async function getOfferHandler() {
 function getOffers() {
     getOfferHandler().then(offer => {
       console.log(offer)
-      offers = offer.providers;
+      //offers = offer.providers;
       document.querySelector('#checkoutWithInstallments').disabled = false;
       document.querySelector('#srcui').append(JSON.stringify(offer));
         
