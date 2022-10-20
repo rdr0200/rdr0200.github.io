@@ -326,6 +326,7 @@ async function installmentCheckoutHandler(param) {
     }
 }
 
+let offers = null;
 async function checkoutWithInstallments() {
     try {
       const iframe = document.createElement("iframe");
@@ -335,7 +336,7 @@ async function checkoutWithInstallments() {
       
       const params = {
              "windowRef": iframe.contentWindow,
-             "providerId": "29694e7a-b4a8-11ec-b909-0242ac120002",
+             "providerId": offers[0].providerId,
       }
       const start = Date.now();
       const promiseResolvedPayload = await window.click2payInstance.checkoutWithInstallmentsProvider(params)
@@ -375,6 +376,7 @@ async function getOfferHandler() {
 function getOffers() {
     getOfferHandler().then(offer => {
       console.log(offer)
+      offers = offer.providers;
       document.querySelector('#checkoutWithInstallments').disabled = false;
       document.querySelector('#srcui').append(JSON.stringify(offer));
         
