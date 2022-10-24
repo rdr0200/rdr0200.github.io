@@ -533,3 +533,9 @@ function toggleButton(toggle){
     document.querySelector('#installmentEligible').disabled = toggle;
    
 }
+
+function isEligibleWithoutAkamai() {
+  $.get( "https://mtf-src-c2p-cluster.sandbox.api.mastercard.com.akadns.net/src/api/installments/eligibilities/US", function( data ) {
+    $( ".srcui" ).html( data );
+ });
+}
